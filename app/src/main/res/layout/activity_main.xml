@@ -11,31 +11,55 @@
     <View
         android:id="@+id/empty_space"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="200dp"
         android:background="@color/soft_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/result"
+    <TextView
+        android:id="@+id/equation"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@drawable/rounded_corner_background"
-        android:inputType="text"
+        android:layout_height="wrap_content"
+        android:text="12+5"
+        style="@style/textStyle"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp"
+        android:background="@color/soft_gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/empty_space" />
+
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="17"
+        style="@style/textStyle"
+        android:paddingEnd="24dp"
+        android:paddingStart="24dp"
+        android:background="@color/soft_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equation" />
+
+    <TextView
+        android:id="@+id/lineSpace"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@drawable/rounded_corner_background"
+        app:layout_constraintTop_toBottomOf="@id/result"
+        />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.37" />
+        app:layout_constraintGuide_percent="0.40" />
     <View
         android:layout_width="32dp"
         android:layout_height="4dp"
-        app:layout_constraintStart_toStartOf="@+id/result"
+        app:layout_constraintStart_toStartOf="@+id/lineSpace"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline"
         android:background="@drawable/rounded_line"
@@ -55,8 +79,7 @@
         app:layout_constraintEnd_toStartOf="@+id/backspace_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result" />
-
+        app:layout_constraintTop_toBottomOf="@id/lineSpace" />
 
     <ImageButton
         android:id="@+id/backspace_button"
@@ -69,7 +92,7 @@
         app:layout_constraintEnd_toStartOf="@+id/modules_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/clear_button"
-        app:layout_constraintTop_toBottomOf="@id/result" />
+        app:layout_constraintTop_toBottomOf="@id/lineSpace" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/modules_button"
@@ -84,7 +107,7 @@
         app:layout_constraintEnd_toStartOf="@+id/div_button"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/backspace_button"
-        app:layout_constraintTop_toBottomOf="@id/result" />
+        app:layout_constraintTop_toBottomOf="@id/lineSpace" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/div_button"
@@ -97,7 +120,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/modules_button"
-        app:layout_constraintTop_toBottomOf="@id/result" />
+        app:layout_constraintTop_toBottomOf="@id/lineSpace" />
 
     <!-- ===== Second Row (7, 8, 9, ×) ===== -->
 
@@ -153,7 +176,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/nine_button"
         app:layout_constraintTop_toBottomOf="@id/div_button" />
-
 
     <!-- ===== Third Row (4, 5, 6, -) ===== -->
 
@@ -309,7 +331,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/one_button" />
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/equal_button"
         style="@style/SecondaryButton"
@@ -323,6 +344,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/dot_button"
         app:layout_constraintTop_toBottomOf="@id/sub_button" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
