@@ -5,6 +5,7 @@
 
     <style name = "BaseRoundedButton" parent="Widget.MaterialComponents.Button">
         <item name="android:background">@drawable/button_rounded_corner</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
         <item name="android:textSize">22sp</item>
         <item name="android:fontFamily">@font/doppio_one_regular</item>
     </style>
@@ -12,11 +13,20 @@
     <style name="SecondaryButton" parent="BaseRoundedButton">
         <item name="backgroundTint">@color/warm_orange</item>
         <item name="android:textColor">@color/soft_gray</item>
+
     </style>
 
     <style name="PrimaryButton" parent="BaseRoundedButton">
         <item name="backgroundTint">@color/soft_gray</item>
         <item name="android:textColor">@color/brown</item>
+
+    </style>
+
+    <style name="textStyle" >
+        <item name="android:fontFamily">@font/doppio_one_regular</item>
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/brown</item>
+        <item name="android:gravity">end</item>
     </style>
 
 </resources>
