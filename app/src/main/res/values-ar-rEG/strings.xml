@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">الة حاسبة</string>
+    <string name="ac">AC</string>
+    <string name="backspace_arrow">back_arrow</string>
+    <string name="modules">%</string>
+    <string name="divide">/</string>
+    <string name="_7_number">7</string>
+    <string name="_8_number">8</string>
+    <string name="_9_number">9</string>
+    <string name="mul_symbol">x</string>
+    <string name="_4_number">4</string>
+    <string name="_5_number">5</string>
+    <string name="_6_number">6</string>
+    <string name="add_symbol">+</string>
+    <string name="_3_number">3</string>
+    <string name="_2_number">2</string>
+    <string name="_1_number">1</string>
+    <string name="sub_symbol">-</string>
+    <string name="dot_symbol">.</string>
+    <string name="_0_number">0</string>
+    <string name="equal_symbol">=</string>
+</resources>
