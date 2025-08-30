@@ -1,4 +1,4 @@
-package com.example.the_chance_xml_tasks
+package com.example.the_chance_calculator_task
 
 import org.junit.Test
 

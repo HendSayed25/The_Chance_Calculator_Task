@@ -1,4 +1,4 @@
-package com.example.the_chance_xml_tasks
+package com.example.the_chance_calculator_task
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

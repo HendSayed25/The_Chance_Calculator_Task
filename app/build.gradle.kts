@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.the_chance_xml_tasks"
+    namespace = "com.example.the_chance_calculator_task"
     compileSdk = 35
 
     defaultConfig {
