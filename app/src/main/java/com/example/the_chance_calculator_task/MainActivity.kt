@@ -2,6 +2,7 @@ package com.example.the_chance_calculator_task
 
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -16,6 +17,7 @@ import net.objecthunter.exp4j.ExpressionBuilder
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
+    private var isArabic: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.dotButton.setOnClickListener {
-            binding.equation.append(".")
+            if (binding.equation.text.isNotEmpty() && binding.equation.text.last() == '.') return@setOnClickListener
+            else binding.equation.append(".")
         }
 
         binding.toggleSign.setOnClickListener {
@@ -59,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         binding.equalButton.setOnClickListener {
             val result = calculateResult(binding.equation.text.toString().replace("x", "*"))
             if (result == INVALID_OPERATION) {
-                Toast.makeText(this,INVALID_OPERATION, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, INVALID_OPERATION, Toast.LENGTH_LONG).show()
             } else if (result == INVALID_EXPRESSION) {
                 Toast.makeText(
                     this,
@@ -99,12 +102,14 @@ class MainActivity : AppCompatActivity() {
             expression.removeRange(match.range)
                 .plus("-$matchedText")
         }
-
     }
 
     private fun calculateResult(expression: String): String {
         return try {
-            ExpressionBuilder(expression).build().evaluate().toString()
+            val normalizedExpression = convertArabicToEnglish(expression)
+            val result = ExpressionBuilder(normalizedExpression).build().evaluate().toString()
+            if (isArabic) convertEnglishToArabic(result)
+            else result
         } catch (e: ArithmeticException) {
             INVALID_OPERATION
         } catch (e: Exception) {
@@ -112,8 +117,31 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun convertArabicToEnglish(input: String): String {
+        val arabicDigits = listOf('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩')
+        val englishDigits = listOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+        var result = input
+        arabicDigits.forEachIndexed { index, c ->
+            result = result.replace(c, englishDigits[index])
+        }
+        isArabic = result != input
+        return result
+    }
+
+    private fun convertEnglishToArabic(input: String): String {
+        val arabicDigits = listOf('٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩')
+        val englishDigits = listOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9')
+
+        var result = input
+        englishDigits.forEachIndexed { index, c ->
+            result = result.replace(c, arabicDigits[index])
+        }
+        return result
+    }
+
     companion object {
-        const val INVALID_EXPRESSION =  "عملية غير صحيحه تاكد من الادخال ثم عاود المحاولة مرة اخرى"
-        const val INVALID_OPERATION =  "لا يمكنك القسمه على صفر :) "
+        const val INVALID_EXPRESSION = "عملية غير صحيحه تاكد من الادخال ثم عاود المحاولة مرة اخرى"
+        const val INVALID_OPERATION = "لا يمكنك القسمه على صفر :) "
     }
 }
