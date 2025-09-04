@@ -19,4 +19,5 @@
     <string name="dot_symbol">.</string>
     <string name="_0_number">0</string>
     <string name="equal_symbol">=</string>
+    <string name="toggle_sign">±</string>
 </resources>
